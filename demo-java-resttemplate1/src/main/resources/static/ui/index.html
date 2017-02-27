@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ActivitiDemo</title>
+    <script type="text/javascript" src="lib/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/component/AjaxUtils.js"></script>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		var strRemoteIP = $("#textRemoteIP").val();
+    		
+    		$("#btnPostHugeData").click(function(){
+    			var iCount = $("#textPostHugeData").val();
+    			for(var i = 0;i<iCount;i++){
+    				ajaxUtils.postAjax("/postHugeData", strRemoteIP, function(res){
+        				console.log(res);
+        			}, function(err){
+        				console.log(err);
+        			});
+    			}
+    		});
+    		
+    		$("#btnPostSmallData").click(function(){
+    			ajaxUtils.postAjax("/postSmallData", strRemoteIP, function(res){
+    				console.log(res);
+    			}, function(err){
+    				console.log(err);
+    			});
+    		});
+    	});
+    </script>
+</head>
+<body>
+	<h1>STEP1.请在另一台VM上运行被调方</h1>
+	另一台VM的IP:<input id="textRemoteIP" value="127.0.0.1"/><br/>
+	<h1>STEP2.构造大数据POST</h1>
+	发送100次大数据:<input id="textPostHugeData" value="100"/>
+	<button id="btnPostHugeData">PostHugeData</button><br/>
+	<h1>STEP3.发送小数据POST</h1>
+	<button id="btnPostSmallData">PostSmallData</button><br/>
+</body>
+</html>

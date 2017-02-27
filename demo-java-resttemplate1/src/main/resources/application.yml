@@ -1,0 +1,10 @@
+server:
+  port: 7000
+
+msCommon:
+  httpRestTimeout4ReqSys: 500 
+  httpRestTimeout4ConSys: 500
+  httpRestTimeout4ReadSys: 10000
+  httpRestTimeout4ReqBu: 500
+  httpRestTimeout4ConBu: 500
+  httpRestTimeout4ReadBu: 60000
